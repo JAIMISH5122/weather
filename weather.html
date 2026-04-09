@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<style>
+  body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #279599, #9face6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+div {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+p {
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+p:first-child {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+p:last-child {
+  font-size: 28px;
+  color: #333;
+}                                
+</style>
+<body>
+  <script>
+
+
+fetch("https://api.openweathermap.org/data/2.5/weather?q=dhansura&units=metric&appid=3498cae6b7df44ff7956255f3030fe6d").then((res)=>{
+  return res.json()
+
+   })
+  .then((data)=>{
+    console.log(data);
+    display(data)
+    
+ 
+})
+
+function display(data){
+
+  let div=document.createElement("div")
+  let temp=document.createElement("p")
+  temp.innerHTML=data.main.temp
+
+    let name=document.createElement("p")
+  name.innerHTML=data.name
+
+
+  div.append(name,temp)
+  document.querySelector("body").append(div)
+}
+ </script>
+</body>
+</html>
